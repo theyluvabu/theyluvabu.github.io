@@ -367,6 +367,75 @@ body {
   filter: blur(0.1vmin);
   background-image: radial-gradient(ellipse at top, transparent 0%, var(--dark-color)), radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)), repeating-linear-gradient(220deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(189deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(148deg, black 0px, black 19px, transparent 19px, transparent 22px), linear-gradient(90deg, #00fffa, #f0f0f0);
 }
+.night::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  background-image: 
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  animation: twinkle 3s infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 3s infinite ease-in-out;
+}
+.star:nth-child(3n) {
+  animation-delay: 0.7s;
+}
+.star:nth-child(3n+1) {
+  animation-delay: 1.2s;
+}
+.star:nth-child(3n+2) {
+  animation-delay: 1.8s;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+    filter: brightness(100%);
+  }
+  25% {
+    opacity: 1;
+    filter: brightness(250%);
+  }
+  50% {
+    opacity: 0.3;
+    filter: brightness(100%);
+  }
+  75% {
+    opacity: 1;
+    filter: brightness(250%);
+  }
+  100% {
+    opacity: 0.3;
+    filter: brightness(100%);
+  }
+}
+
 
 .flowers {
   position: relative;
